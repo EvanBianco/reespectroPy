@@ -72,6 +72,9 @@ def plot(record,
     if np.amax(curve) <= dark_flag:
         ax.patch.set_alpha(0.25)
         ax.patch.set_facecolor(flag_color)
+        
+    ax.axhline(dark_flag, linestyle='dashed', color='gray', lw=1)
+    ax.text(2600, dark_flag, s='  darkness threshold', color='gray', ha='left', va='center')
 
     plt.tick_params(axis='y', which='both', labelleft='off', labelright='on')
     ax.grid()
