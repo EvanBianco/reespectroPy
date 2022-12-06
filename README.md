@@ -25,7 +25,7 @@ A composite plot of a raw spectrogram with two background corrections applied: t
 
 ![Example of sample 2399 (Allanite)](/images/2399_allanite.png)
 
-In the QC_plots notebook we have a interactive widget where the user can slide through the entire sample collection, and save any figure using the "Save Figure" button. The button, doesn't not have the most elegant behavior. You must press the button once to save a figure (the figure name will be made up of the `cm_ree_labels` category, the sample ID and the mineral name). You must then press the button a second time to deactivate the saving before moving to a new image. If you don't deselect the Save Figure button, the program will save every figure that you move to. If you have any suggestions on how to improve this behaviour, please let me know.
+In the [QC_plots notebook](notebooks/05_QC_plots_and_visualizations.ipynb) we have a interactive widget where the user can slide through the entire sample collection, and save any figure using the "Save Figure" button. The button, doesn't not have the most elegant behavior. You must press the button once to save a figure (the figure name will be made up of the `cm_ree_labels` category, the sample ID and the mineral name). You must then press the button a second time to deactivate the saving before moving to a new image. If you don't deselect the Save Figure button, the program will save every figure that you move to. If you have any suggestions on how to improve this behaviour, please let me know.
 
 **Colors** throughout this work I've chosen three colours to denote the classes. Black is used to label Class 0 (no REE bearing mineral), Green is labels
 
