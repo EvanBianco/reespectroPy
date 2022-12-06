@@ -5,21 +5,21 @@ Processing and analysis toolbox for identification of Rare Earth Elements (REE) 
 
 In this work, we've built a data set from three libraries to build a collection containing three classes of minerals:
 
+
+
+The samples were compiled from the Geological Survey of Canada Open File Report 8619 [GSC OF_8619], Geological Survey of Canada Open File Report 7923 (link), as well as a hand selection the USGS_Speclib_07a. We've built specific file readers to parse the numerical and textual meta data from this different sources.
+
+## What do the classes mean?
+
 - Class 0: minerals that do not contain REE.
 - Class 1: minerals that have the capacity to host REEs, but there is no guarentee that each sample will contain REEs.
 - Class 2: minerals that contain REEs.
 
 Note: for the minerals in Class 1 and Class 2 that contains REEs, we do not know the concentration or the elemental makeup of this concentration. So that limits what we can do from a characterization perspective. 
 
-The samples were compiled from the Geological Survey of Canada Open File Report 8619 [GSC OF_8619], Geological Survey of Canada Open File Report 7923 (link), as well as a hand selection the USGS_Speclib_07a. We've built specific file readers to parse the numerical and textual meta data from this different sources.
+Class 1 might need a rethink.
 
-## About the 
-
-## What do the classes mean?
-
-Insert a concise blurb here. Class 1 might need a rethink.
-
-
+# Visualization
 
 A composite plot of a raw spectrogram with two background corrections applied: the so-called Convex-Hull correction, and an Asymmetric Least Squares fit.
 
