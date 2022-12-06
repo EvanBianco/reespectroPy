@@ -19,7 +19,7 @@ Note: for the minerals in Class 1 and Class 2 that contains REEs, we do not know
 
 Class 1 might need a rethink.
 
-# Visualization
+## Visualization
 
 A composite plot of a raw spectrogram with two background corrections applied: the so-called Convex-Hull correction, and an Asymmetric Least Squares fit.
 
