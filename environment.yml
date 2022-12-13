@@ -23,6 +23,8 @@ dependencies:
 - spectral
 - camelot-py
 - python-docx
+- pysptools
+- streamlit
 - pip:
   - geopy
   - pyproj

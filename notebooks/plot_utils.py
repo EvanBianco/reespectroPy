@@ -14,6 +14,8 @@ def plot(record,
          ylim='auto', 
          figsize=(15, 6), 
          dark_flag=0.0,
+         wv_range=(450, 2500),
+         vert_lines=list(np.arange(350, 1000, 100)) + [1500],
          flag_color='orange',
          **kwargs):
     """
@@ -44,7 +46,7 @@ def plot(record,
     color_dict = {2: 'red', 1: 'green', 0:'black'}
 
     if w is None:
-        w = list(np.arange(low_start, 2500).astype(str))
+        w = list(np.arange(wv_range[0], wv_range[1]).astype(str))
         basis = np.array(w).astype(float)
     else:
         basis = np.array(w).astype(float)
@@ -58,9 +60,11 @@ def plot(record,
 
     fig = plt.figure(figsize=figsize)
     ax = fig.add_axes([0.1, 0.1, 0.5, 0.8])
+
     # raw curve
     ax.plot(basis, curve, c=color_dict[record['cm_ree_labels']],
             linestyle='dotted', label='raw', **kwargs)
+
     # hull curve
     ax.plot(xhull, yhull, c=color_dict[record['cm_ree_labels']], 
             linestyle='dashed', lw=1, label='hull curve', **kwargs)
@@ -69,29 +73,42 @@ def plot(record,
             label='hull-corrected', **kwargs)
     ax.set_xlabel('wavelength (nm)')
     ax.legend()
+
+    # Darkness threshold
     if np.amax(curve) <= dark_flag:
         ax.patch.set_alpha(0.25)
         ax.patch.set_facecolor(flag_color)
         
     ax.axhline(dark_flag, linestyle='dashed', color='gray', lw=1)
-    ax.text(2600, dark_flag, s='  darkness threshold', color='gray', ha='left', va='center')
+    ax.text(2600, dark_flag, s='        darkness \n        threshold', color='gray', ha='left', va='center')
 
     plt.tick_params(axis='y', which='both', labelleft='off', labelright='on')
     ax.grid()
 
-    _ = ax.set_xticks([350, 450, 550, 650, 750, 850, 950, 1500])
+    # Vertical line annotations
+    _ = ax.set_xticks(vert_lines)
     ax.set_ylim(0, 1.1)
 
     if meta_keys is not None:
         label = ''
         longest = max([len(k) for k in meta_keys])
         for k in meta_keys:
-            label = label + k + ': ' + ' '*(longest - len(k)) + str(record[k]) + '\n'
+            if k.lower() == 'formula':
+                item = format_formula(str(record[k]))
+            else:
+                item = str(record[k])
+            label = label + k.replace('_', ' ') + ': ' + ' '*(longest - len(k)) + \
+                    item + '\n'
         ax.text(x=1.1, y=1.0, s=label, transform=ax.transAxes, 
-                va='top', font='monospace', fontsize=13)
+                va='top', font='monospace', fontsize=11)
 
     return fig, ax
 
+
+def format_formula(str):
+    """Make all numbers subscripts in chemical formula"""
+    sub = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
+    return str.translate(sub)
 
     
 
