@@ -2,7 +2,8 @@
 from tokenize import PlainToken
 import numpy as np
 import matplotlib.pyplot as plt
-from pysptools.spectro import convex_hull_removal, SpectrumConvexHullQuotient
+from signal_processing import convex_hull_removal
+
 
 def plot(record,
          w=None,
@@ -68,6 +69,7 @@ def plot(record,
     # hull curve
     ax.plot(xhull, yhull, c=color_dict[record['cm_ree_labels']], 
             linestyle='dashed', lw=1, label='hull curve', **kwargs)
+
     # hull correction
     ax.plot(basis, ncrs, c=color_dict[record['cm_ree_labels']], 
             label='hull-corrected', **kwargs)
